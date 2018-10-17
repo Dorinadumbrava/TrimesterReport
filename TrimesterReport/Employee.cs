@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,6 +78,34 @@ namespace TrimesterReport
             {
                 _salary = value;
             }
+        }
+        public Employee (string[] employeeDataArray)
+        {
+            
+            int temporaryUserInt;
+            if (Int32.TryParse(employeeDataArray[0], out temporaryUserInt))
+            {
+                ID = temporaryUserInt;
+                //Console.WriteLine(temporaryUserInt);
+            }
+            FirstName = employeeDataArray[1];
+            LastName = employeeDataArray[2];
+            //Console.WriteLine(FirstName);
+            //Console.WriteLine(LastName);
+            if (Int32.TryParse(employeeDataArray[3], out temporaryUserInt))
+            {
+                Salary = temporaryUserInt;
+                //Console.WriteLine(temporaryUserInt);
+            }
+            DateTime userDate;
+            if (DateTime.TryParseExact(employeeDataArray[4], "dd-MM-yyyy", CultureInfo.InvariantCulture,
+                       DateTimeStyles.None, out userDate))
+            {
+                Date=userDate;
+                //Console.WriteLine(userDate);
+            }
+            Console.WriteLine("User: {0}, {1} {2} has a salry of {3} on date {4}.", ID, FirstName, LastName, Salary, Date);
+            
         }
     }
 }

@@ -35,8 +35,8 @@ namespace TrimesterReport
                         {
                             Console.WriteLine("There are no arguments inserted");
                         }
+                        //input1.showData();
                         //EmployeeData.CreateUser();
-                        //GetData.ShowUserInputs();
                     }
                     break;
                 case "I":
