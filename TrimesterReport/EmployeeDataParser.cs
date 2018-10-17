@@ -24,9 +24,12 @@ namespace TrimesterReport
         }
         public void showData()
         {
+            int i = 1;
             foreach (var employee in employeeList1.EmployeeList)
             {
-                Console.WriteLine(employee.ID+" " + employee.FirstName+" "+employee.LastName+" "+"verify");
+                Console.WriteLine("Employee {0}, {2} {3} with ID {1} has a salary of {4} on the date {5}.", i, employee.ID, employee.FirstName, employee.LastName
+                    , employee.Salary, employee.Date);
+                i++;
             }
         }
     }

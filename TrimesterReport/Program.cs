@@ -84,7 +84,7 @@ namespace TrimesterReport
             }
             Console.WriteLine("");
             Console.WriteLine("Your users:");
-            //EmployeeData.Show();
+            input1.showData();
             Console.ReadKey();
         }
     }
