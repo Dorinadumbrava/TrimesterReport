@@ -101,8 +101,8 @@ namespace TrimesterReport
             if (DateTime.TryParseExact(employeeDataArray[4], "dd/MM/yyyy", CultureInfo.InvariantCulture,
                        DateTimeStyles.None, out userDate))
             {
-                Date=userDate;
-                //Console.WriteLine(userDate);
+                Date = userDate;
+                //Console.WriteLine(ID + " " + userDate);
             }
             //Console.WriteLine("User: {0}, {1} {2} has a salry of {3} on date {4}.", ID, FirstName, LastName, Salary, Date);
         }

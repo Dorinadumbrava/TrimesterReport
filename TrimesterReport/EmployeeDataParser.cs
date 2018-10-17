@@ -10,6 +10,7 @@ namespace TrimesterReport
     {
         private readonly int nrOfarguments = 5;
         EmloyeeLists employeeList1 = new EmloyeeLists();
+        Report anotherReport = new Report();
         public void ParseData(string employeeInput)
         {
             employeeInput = employeeInput.TrimEnd();
@@ -20,7 +21,6 @@ namespace TrimesterReport
             {
                 employeeList1.EmployeeList.Add(new Employee(employeeData));
             }
-
         }
         public void showData()
         {
@@ -31,6 +31,10 @@ namespace TrimesterReport
                     , employee.Salary, employee.Date);
                 i++;
             }
+        }
+        public void generateReport()
+        {
+            anotherReport.GenerateTrimesterReport(employeeList1.EmployeeList);
         }
     }
 }

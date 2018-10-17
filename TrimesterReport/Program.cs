@@ -13,7 +13,7 @@ namespace TrimesterReport
             Console.WriteLine("Chose a working method");
             Console.WriteLine("Write 'F' to read from file, 'I' to pass arguments and pres Enter to to read from console");
             string userChoice = Console.ReadLine().ToUpper();
-
+            Report report1 = new Report();
             EmployeeDataParser input1 = new EmployeeDataParser();
             switch (userChoice)
             {
@@ -84,8 +84,9 @@ namespace TrimesterReport
             }
             Console.WriteLine("");
             Console.WriteLine("Your users:");
+            input1.generateReport();
             input1.showData();
-            Console.ReadKey();
+            Console.ReadLine();
         }
     }
 }
