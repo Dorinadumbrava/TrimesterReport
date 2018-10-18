@@ -10,14 +10,30 @@ namespace TrimesterReport
     {
         public void GenerateTrimesterReport(List<Employee> employeeList)
         {
+            var groupByYear =
+                from employee in employeeList
+                group employee by employee.Date.Year into employeeByYear
+                orderby employeeByYear.Key
+                select (from employee in employeeByYear
+                        group employee by Converter.GroupByTrimester(employee.Date) into employeeByTrimester
+                        select employeeByTrimester);
+            
+            foreach (var year in groupByYear)
+            {
+                Console.WriteLine(year);
+                var averageSalary = 0;
+                foreach (var trimester in year)
+                {
+                    Console.WriteLine(trimester);
+                    foreach (var employee in trimester)
+                    {
+                        averageSalary += employee.Salary;
+                    }
+                    averageSalary = averageSalary / trimester.Count();
+                    Console.WriteLine("The avg salary is " +averageSalary);
+                }
 
-            employeeList.GroupBy(g => g.Date.Year).OrderBy(key => key);
-            employeeList.GroupBy(g => Converter.GroupByTrimester(g.Date), k => k.Salary);
-            Console.WriteLine("ordered");
-            //foreach (var employee in employeeList)
-            //{
-            //    Console.WriteLine("User:{1} {2} has a salry of {3} on date {4}.", employee.ID, employee.FirstName, employee.LastName, employee.Salary, employee.Date);
-            //}
+            }
         }
         
     }

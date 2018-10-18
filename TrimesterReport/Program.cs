@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,19 @@ namespace TrimesterReport
                         Console.WriteLine("Give a path to your file");
                         //validate the input
                         string connectToUserInput = Console.ReadLine();
-                        string allUserInputs = System.IO.File.ReadAllText(connectToUserInput);
+                        string allUserInputs="";
+                        try
+                        {
+                            allUserInputs = System.IO.File.ReadAllText(connectToUserInput);
+                        }
+                        catch  (FileNotFoundException ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
                         string[] fileUserInputs = allUserInputs.Split(';');
                         if (fileUserInputs.Length > 0)
                         {
