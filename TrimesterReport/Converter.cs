@@ -18,13 +18,13 @@ namespace TrimesterReport
             {
                 return 2;
             }
-            else if (date.Month > 9 && date.Month <= 12)
+            else if (date.Month > 8 && date.Month <= 12)
             {
                 return 3;
             }
             else
             {
-                throw new Exception("Invalid month");
+                throw new Exception("this month is not valid: {0}");
             }
         }
 
