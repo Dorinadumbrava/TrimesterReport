@@ -8,19 +8,19 @@ namespace TrimesterReport
 {
     static class Converter
     {
-        static public int GroupByTrimester(DateTime date)
+        static public string GroupByTrimester(DateTime date)
         {
             if (date.Month > 0 && date.Month <= 4)
             {
-                return 1;
+                return "I";
             }
             else if (date.Month > 4 && date.Month <= 8)
             {
-                return 2;
+                return "II";
             }
             else if (date.Month > 8 && date.Month <= 12)
             {
-                return 3;
+                return "III";
             }
             else
             {

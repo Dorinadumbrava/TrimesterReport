@@ -46,6 +46,9 @@
     <Compile Include="EmloyeeLists.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeDataParser.cs" />
+    <Compile Include="IPrint.cs" />
+    <Compile Include="IShow.cs" />
+    <Compile Include="Printer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report.cs" />

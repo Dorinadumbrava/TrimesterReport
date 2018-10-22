@@ -14,7 +14,6 @@ namespace TrimesterReport
             Console.WriteLine("Chose a working method");
             Console.WriteLine("Write 'F' to read from file, 'I' to pass arguments and pres Enter to to read from console");
             string userChoice = Console.ReadLine().ToUpper();
-            Report report1 = new Report();
             EmployeeDataParser input1 = new EmployeeDataParser();
             switch (userChoice)
             {
@@ -85,10 +84,7 @@ namespace TrimesterReport
                         while (consoleInput.Length > 0)
                         {
                             consoleInput = Console.ReadLine();
-                            //GetData.ReadAndSplit(consoleInput);
                         }
-                        //EmployeeData.CreateUser();
-                        //GetData.ShowUserInputs();
 
                     }
                     break;
@@ -97,8 +93,15 @@ namespace TrimesterReport
             }
             Console.WriteLine("");
             Console.WriteLine("Your users:");
-            input1.generateReport();
-            input1.showData();
+            Printer print1 = new Printer();
+            Console.WriteLine("Give an addres to store your file");
+            string fileAddress = Console.ReadLine();
+            Console.WriteLine("Give a name for yourFile");
+            string fileName = Console.ReadLine();
+            var path = print1.GeneratePath(fileAddress, fileName);
+            print1.FilePrint(input1.generateReport(), path);
+            print1.ShowConsole(input1.generateReport());
+            //input1.showData();
             Console.ReadLine();
         }
     }

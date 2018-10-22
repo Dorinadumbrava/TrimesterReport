@@ -32,9 +32,14 @@ namespace TrimesterReport
                 i++;
             }
         }
-        public void generateReport()
+        public List<string> generateReport()
         {
-            anotherReport.GenerateTrimesterReport(employeeList1.EmployeeList);
+            var finalList = anotherReport.GenerateTrimesterReport(employeeList1.EmployeeList);
+            return finalList;
+            //foreach (var elem in employeeList1.EmployeeList)
+            //{
+            //    Console.WriteLine(elem.FirstName+elem.ID);
+            //}
         }
     }
 }

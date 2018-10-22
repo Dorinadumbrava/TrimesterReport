@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 namespace TrimesterReport
 {
     class Report
-    {
-        public void GenerateTrimesterReport(List<Employee> employeeList)
+    { 
+        
+        public List<string> GenerateTrimesterReport(List<Employee> employeeList)
         {
             var groupByYear = from employee in employeeList
                               group employee by employee.Date.Year into employeeByYear
@@ -17,33 +18,36 @@ namespace TrimesterReport
                               {
                                   year = employeeByYear.Key,
                                   trimesters = from yearEmployee in employeeByYear
-                                  group yearEmployee by Converter.GroupByTrimester(yearEmployee.Date) into trimesterGroups
-                                  orderby trimesterGroups.Key
-                                  select trimesterGroups
+                                               group yearEmployee by Converter.GroupByTrimester(yearEmployee.Date) into trimesterGroups
+                                               orderby trimesterGroups.Key
+                                               select trimesterGroups
+            
                               };
-
-
-            foreach (var employee in groupByYear)
+            
+            List<string> trimesterReport = new List<string>();
+            
+            foreach (var years in groupByYear)
             {
-                Console.WriteLine(employee.year);
                 var averageSalary = 0;
-                foreach (var empl in employee.trimesters)
+                trimesterReport.Add(years.year.ToString());
+                foreach (var trimester in years.trimesters)
                 {
                     int count = 0;
-                    Console.WriteLine(empl.Key);
-                    foreach (var trimesterEmployee in empl)
+                    //var averageSalary = trimester.Average(trimester.)
+                    foreach (var employee in trimester)
                     {
-
-                        averageSalary += trimesterEmployee.Salary;
+                        averageSalary += employee.Salary;
                         count++;
                     }
-                    averageSalary = averageSalary / empl.Count();
-                    Console.WriteLine("The avg salary is {0}, Here are {1}, {2} salaries", averageSalary, empl.Count(), count);
+                    averageSalary = averageSalary / trimester.Count();
+                    
+                    trimesterReport.Add("Trimester "+ trimester.Key.ToString()+": "+ averageSalary.ToString());
                 }
-                
             }
-            
+            return trimesterReport;
         }
+
+            
 
 
     }
