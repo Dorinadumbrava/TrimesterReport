@@ -9,19 +9,18 @@ namespace TrimesterReport
 {
     class Program
     {
+        static EventHandler giveResults;
         static void Main(string[] args)
         {
             Console.WriteLine("Chose a working method");
             Console.WriteLine("Write 'F' to read from file, 'I' to pass arguments and pres Enter to to read from console");
-            string userChoice = Console.ReadLine().ToUpper();
+            string userChoice = args[0].ToUpper();
             EmployeeDataParser input1 = new EmployeeDataParser();
             switch (userChoice)
             {
                 case "F":
                     {
-                        Console.WriteLine("Give a path to your file");
-                        //validate the input
-                        string connectToUserInput = Console.ReadLine();
+                        string connectToUserInput = args[1];
                         string allUserInputs="";
                         try
                         {
@@ -29,7 +28,7 @@ namespace TrimesterReport
                         }
                         catch  (FileNotFoundException ex)
                         {
-                            Console.WriteLine(ex);
+                            Console.WriteLine("There is no input file at this location: {0} .",connectToUserInput, ex);
                         }
                         catch (Exception ex)
                         {
@@ -47,8 +46,6 @@ namespace TrimesterReport
                         {
                             Console.WriteLine("There are no arguments inserted");
                         }
-                        //input1.showData();
-                        //EmployeeData.CreateUser();
                     }
                     break;
                 case "I":
@@ -72,8 +69,6 @@ namespace TrimesterReport
                         {
                             Console.WriteLine("There are no arguments inserted");
                         }
-                        //EmployeeData.CreateUser();
-                        //GetData.ShowUserInputs();
                     }
                     break;
                 case "":
@@ -92,16 +87,12 @@ namespace TrimesterReport
                     break;
             }
             Console.WriteLine("");
-            Console.WriteLine("Your users:");
             Printer print1 = new Printer();
-            Console.WriteLine("Give an addres to store your file");
-            string fileAddress = Console.ReadLine();
-            Console.WriteLine("Give a name for yourFile");
-            string fileName = Console.ReadLine();
-            var path = print1.GeneratePath(fileAddress, fileName);
+            
+            //print1.runEvent()
+            string path = args[args.Count()];
             print1.FilePrint(input1.generateReport(), path);
             print1.ShowConsole(input1.generateReport());
-            //input1.showData();
             Console.ReadLine();
         }
     }

@@ -1,0 +1,20 @@
+1989
+Trimester III: 9200
+1991
+Trimester II: 9700
+1994
+Trimester I: 13100
+1996
+Trimester III: 8700
+1998
+Trimester I: 12100
+1999
+Trimester I: 72000
+Trimester II: 81300
+2000
+Trimester III: 14000
+2001
+Trimester II: 19500
+2008
+Trimester II: 15700
+Trimester III: 23500
